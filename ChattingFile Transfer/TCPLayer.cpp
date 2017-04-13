@@ -1,4 +1,4 @@
-// TCPLayer.cpp: implementation of the CTCPLayer class.
+// TCPLayer.cpp: implementation of the TCPLayer class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -40,39 +40,40 @@ void CTCPLayer::ResetHeader()
 	memset(m_sHeader.tcp_data,0,TCP_DATA_SIZE);
 }
 
-void CTCPLayer::SetSourcePort(unsigned int src_port)
+
+void CTCPLayer::SetSourcePort(unsigned int ipAddress)  //필요없음
 {
-	m_sHeader.tcp_sport = src_port;
+	m_sHeader.tcp_sport = ipAddress;
 }
 
-void CTCPLayer::SetDestinPort(unsigned int dst_port)
+void CTCPLayer::SetDestionPort(unsigned int ipAddress)
 {
-	m_sHeader.tcp_dport = dst_port;
+	m_sHeader.tcp_dport = ipAddress;
 }
 
-BOOL CTCPLayer::Send(unsigned char* ppayload, int nlength)
+BOOL CTCPLayer::Send(unsigned char *ppayload, int nlength)
 {
 	memcpy( m_sHeader.tcp_data, ppayload, nlength ) ;
 	
 	BOOL bSuccess = FALSE ;
 	bSuccess = mp_UnderLayer->Send((unsigned char*)&m_sHeader,nlength+TCP_HEADER_SIZE);	
 	
- 	return bSuccess;
+
+	return bSuccess ;
 }
 
-BOOL CTCPLayer::Receive(unsigned char* ppayload)
+BOOL CTCPLayer::Receive( unsigned char* ppayload )
 {
-	PTCPLayer_HEADER pFrame = (PTCPLayer_HEADER) ppayload ;
+	PTCP_HEADER pFrame = (PTCP_HEADER) ppayload ;
 	
 	BOOL bSuccess = FALSE;
 
- 	//////////////////////// fill the blank ///////////////////////////////
 	if(pFrame->tcp_dport == TCP_PORT_CHAT){
-		bSuccess = mp_aUpperLayer[1]->Receive((unsigned char*)pFrame->tcp_data);
+		bSuccess = mp_aUpperLayer[1]->Receive((unsigned char*)pFrame->tcp_data); 
 	}else if(pFrame->tcp_dport==TCP_PORT_FILE){
 		bSuccess = mp_aUpperLayer[0]->Receive((unsigned char*)pFrame->tcp_data);
 	}
-	///////////////////////////////////////////////////////////////////////
+
 
 	return bSuccess ;
 }

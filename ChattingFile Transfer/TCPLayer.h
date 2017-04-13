@@ -1,4 +1,4 @@
-// TCPLayer.h: interface for the CEthernetLayer class.
+// TcpLayer.h: interface for the TcpLayer class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -8,24 +8,24 @@
 
 #include "BaseLayer.h"
 
-class CTCPLayer 
+class CTCPLayer
 : public CBaseLayer  
 {
 private:
-	inline void		ResetHeader();	
+	inline void		ResetHeader( );
 
 public:
+	BOOL			Receive( unsigned char* ppayload ) ;
+	BOOL			Send( unsigned char* ppayload, int nlength );
+
+	void			SetDestionPort( unsigned int ipAddress );
+	void			SetSourcePort (unsigned int ipAddress );
+
 	CTCPLayer( char* pName );
 	virtual ~CTCPLayer();
 
-	void SetSourcePort(unsigned int ipAddress);	
-	void SetDestinPort(unsigned int ipAddress);
-
-	BOOL Send(unsigned char* ppayload, int nlength);
-	BOOL Receive(unsigned char* ppayload);
-
-	typedef struct _TCPLayer_HEADER {
-		unsigned short tcp_sport;	// source port
+	typedef struct _TCP_HEADER {
+unsigned short tcp_sport;	// source port
 		unsigned short tcp_dport;	// destination port
 		unsigned int tcp_seq;		// sequence number
 		unsigned int tcp_ack;		// acknowledged sequence
@@ -36,7 +36,10 @@ public:
 		unsigned short tcp_urgptr;	// no use
 		unsigned char Padding[4];
 		unsigned char tcp_data[ TCP_DATA_SIZE ]; // data part
-	}TCPLayer_HEADER, *PTCPLayer_HEADER ;
+
+	} _TCP_HEADER, *PTCP_HEADER ;
+
 protected:
-	TCPLayer_HEADER	m_sHeader ;
+	_TCP_HEADER	m_sHeader ;
 };
+
