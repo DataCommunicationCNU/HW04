@@ -57,7 +57,7 @@ BOOL CFileAppLayer::Receive(unsigned char* ppayload)
 
 	int progress_value;
 
-	BOOL bResult;
+	BOOL bResult; // 여기 저장됨
 	BOOL bSuccess = FALSE;
 	PFILE_APP_HEADER fapp_hdr = (PFILE_APP_HEADER) ppayload ;
 	static unsigned char** GetBuff;

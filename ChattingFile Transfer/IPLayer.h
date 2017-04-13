@@ -42,7 +42,7 @@ public:
 	} IPLayer_HEADER, *PIPLayer_HEADER ;
 
 protected:
-	IPLayer_HEADER	m_sHeader ;
+	IPLayer_HEADER	m_sHeader;
 };
 
 
