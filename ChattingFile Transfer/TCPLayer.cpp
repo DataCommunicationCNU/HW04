@@ -64,7 +64,7 @@ BOOL CTCPLayer::Send(unsigned char *ppayload, int nlength)
 
 BOOL CTCPLayer::Receive( unsigned char* ppayload )
 {
-	PTCP_HEADER pFrame = (PTCP_HEADER) ppayload ;
+	PTCP_HEADER pFrame = (PTCP_HEADER) ppayload;
 	
 	BOOL bSuccess = FALSE;
 

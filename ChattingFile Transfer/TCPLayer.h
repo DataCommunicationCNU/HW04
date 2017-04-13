@@ -40,6 +40,6 @@ unsigned short tcp_sport;	// source port
 	} _TCP_HEADER, *PTCP_HEADER ;
 
 protected:
-	_TCP_HEADER	m_sHeader ;
+	_TCP_HEADER	m_sHeader;
 };
 
