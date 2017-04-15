@@ -71,16 +71,16 @@ IDR_MAINFRAME           ICON                    "res\\apple.ico"
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 235, 67
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 73
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "CFT 정보"
 FONT 9, "굴림", 0, 0, 0x0
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,18,21
     LTEXT           "CFT using shared file.. version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
     LTEXT           "Chung-nam National Univ.",IDC_STATIC,40,25,131,8
     DEFPUSHBUTTON   "확인",IDOK,178,7,50,14,WS_GROUP
-    LTEXT           "201007142 양태훈",IDC_STATIC,40,40,119,8
+    LTEXT           "이동재  구본철  최지호  김현지  김가연  ",IDC_STATIC,40,40,156,8
 END
 
 IDD_IPC_DIALOG DIALOGEX 0, 0, 350, 227
@@ -135,12 +135,12 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "041204B0"
+        BLOCK "041204b0"
         BEGIN
             VALUE "FileDescription", "CFT MFC 응용 프로그램"
             VALUE "FileVersion", "1, 0, 0, 1"
             VALUE "InternalName", "cft"
-            VALUE "LegalCopyright", "Copyright (C) 2002"
+            VALUE "LegalCopyright", "Copyright (C) 2017"
             VALUE "OriginalFilename", "cft.EXE"
             VALUE "ProductName", "cft 응용 프로그램"
             VALUE "ProductVersion", "1, 0, 0, 1"
@@ -166,7 +166,7 @@ BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 228
         TOPMARGIN, 7
-        BOTTOMMARGIN, 60
+        BOTTOMMARGIN, 66
     END
 
     IDD_IPC_DIALOG, DIALOG

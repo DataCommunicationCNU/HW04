@@ -81,7 +81,7 @@ CIPCAppDlg::CIPCAppDlg(CWnd* pParent /*=NULL*/)
 	m_LayerMgr.AddLayer( new CFileAppLayer( "FileApp" ) ) ;
 
 	//////////////////////// fill the blank ///////////////////////////////
-	m_LayerMgr.ConnectLayers("NI ( *Ethernet ( *IP ( *TCP ( *FileApp ( *ChatDlg ) *ChatApp ( *ChatDlg ) ) ) ) )" );
+	m_LayerMgr.ConnectLayers("NI ( *Ethernet ( *IP ( *TCP ( *FileApp ( *ChatDlg ) *ChatApp ( *ChatDlg ) ) ) ) )");
 	///////////////////////////////////////////////////////////////////////
 
 	m_ChatApp = (CChatAppLayer*)mp_UnderLayer ;
@@ -168,10 +168,7 @@ void CIPCAppDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ( nID == SC_CLOSE )
 	{
-		if ( MessageBox( "Are you sure ?", 
-			"Question", 
-			MB_YESNO | MB_ICONQUESTION ) 
-			== IDNO )
+		if ( MessageBox( "Are you sure ?", "Question", MB_YESNO | MB_ICONQUESTION ) == IDNO )
 			return ;
 		else EndofProcess( ) ;
 	}
