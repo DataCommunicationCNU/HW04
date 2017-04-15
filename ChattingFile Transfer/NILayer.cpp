@@ -1,5 +1,6 @@
 // NILayer.cpp: implementation of the CNILayer class.
-//
+// 네트워크 인터페이스 계층으로써의 역할이 주. 
+// 데이터를 송수신하는 기능에 송수신하기 위해 네트워크 어댑터의 객체포인터를 가지고 그를 접근하기 위한 기능이 전부이다. 
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
@@ -30,7 +31,7 @@ CNILayer::~CNILayer()
 }
 
 void CNILayer::PacketStartDriver()
-{
+{//패킷 드라이버 동작의 시작을 알리는 함수. 인자는 패킷 드라이버가 제공하는 서비스의 종류. 
 	char errbuf[PCAP_ERRBUF_SIZE];
 
 	if(m_iNumAdapter == -1){
@@ -90,6 +91,9 @@ BOOL CNILayer::Send(unsigned char *ppayload, int nlength)
 {
 	if(pcap_sendpacket(m_AdapterObject,ppayload,nlength))
 	{
+	  //pcap_sendpacket() is called to send a hand-crafted packet.
+      //pcap_sendpacket()은 전송하려는 데이터, 버퍼의 길이, 어댑터의 argument들을 가진다. 
+      //it returns 0 on success.
 		AfxMessageBox("패킷 전송 실패");
 		return FALSE;
 	}
