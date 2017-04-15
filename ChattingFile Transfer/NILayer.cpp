@@ -127,7 +127,7 @@ UINT CNILayer::ReadingThread(LPVOID pParam)
 	///////////////////////////////////////////////////////////////////////
 }
 
-UINT CNILayer::FileTransferThread(LPVOID pParam)
+UINT CNILayer::FileTransferThread(LPVOID pParam) // 이거 왜돌리지?
 {
 	CNILayer *pNI = (CNILayer *)pParam;
 

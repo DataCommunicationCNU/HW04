@@ -59,7 +59,7 @@ BOOL CChatAppLayer::Receive( unsigned char* ppayload )
 	PCHAT_APP_HEADER capp_hdr = (PCHAT_APP_HEADER) ppayload ;
 	static unsigned char *GetBuff;
 	
-	if(capp_hdr->capp_totlen <= APP_DATA_SIZE){
+	if(capp_hdr->capp_totlen <= APP_DATA_SIZE){	//	받은 데이터가 쪼개진 데이터인지 아닌지 판정한다.
 		GetBuff = (unsigned char *)malloc(capp_hdr->capp_totlen);
 		memset(GetBuff,0,capp_hdr->capp_totlen); 
 		memcpy(GetBuff,capp_hdr->capp_data,capp_hdr->capp_totlen); 

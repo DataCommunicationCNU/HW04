@@ -72,7 +72,7 @@ BOOL CFileAppLayer::Receive(unsigned char* ppayload)
 	}
 	if(fapp_hdr->fapp_msg_type == MSG_TYPE_FRAG) 
 	{
-		if(fapp_hdr->fapp_type == DATA_TYPE_BEGIN)
+		if(fapp_hdr->fapp_type == DATA_TYPE_BEGIN) // 첫번째 조각인지 검사
 		{
 			((CIPCAppDlg *)mp_aUpperLayer[0])->OnOffFileButton(FALSE);
 
@@ -187,6 +187,7 @@ UINT CFileAppLayer::FileThread( LPVOID pParam )
 	if(bFILE==TRUE)
 	{
 		hFile = CreateFile((char *)fapp_hdr->m_FilePath,GENERIC_READ,0,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_READONLY,NULL);
+
 		if(hFile == INVALID_HANDLE_VALUE) 
 		{
 			AfxMessageBox("올바른 파일 경로가 아닙니다.");
@@ -216,7 +217,7 @@ UINT CFileAppLayer::FileThread( LPVOID pParam )
 			tot_seq_num = (send_fileTotlen/FILE_READ_SIZE)+1;
 	}
 
-	while(i<=tot_seq_num+1) //
+	while(i<=tot_seq_num+1)
 	{
 		if(bACK == TRUE)	
 		{
