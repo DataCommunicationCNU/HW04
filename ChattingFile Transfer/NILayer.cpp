@@ -104,7 +104,7 @@ BOOL CNILayer::Receive( unsigned char* ppayload )
 	return bSuccess;
 }
 
-UINT CNILayer::ReadingThread(LPVOID pParam)
+UINT CNILayer::ReadingThread(LPVOID pParam)//receive는 여기서 시작
 {
 	//////////////////////// fill the blank ///////////////////////////////
 	struct pcap_pkthdr *header;

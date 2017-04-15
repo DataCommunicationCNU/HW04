@@ -302,8 +302,7 @@ UINT CFileAppLayer::FileThread( LPVOID pParam )
 
 				progress_value = 100 * ((float)dwState / dwFileSize);
 				((CIPCAppDlg *)fapp_hdr->mp_aUpperLayer[0])->m_ProgressCtrl.SetPos(progress_value);
-				///////////////////////////////////////////////////////////////////////
-				
+				///////////////////////////////////////////////////////////////////////				
 			}
 			else 
 			{
