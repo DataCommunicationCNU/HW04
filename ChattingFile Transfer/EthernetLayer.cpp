@@ -74,7 +74,7 @@ BOOL CEthernetLayer::Receive( unsigned char* ppayload )
 	if((memcmp((char *)pFrame->enet_dstaddr.S_un.s_ether_addr,(char *)m_sHeader.enet_srcaddr.S_un.s_ether_addr,6)==0 &&
 		memcmp((char *)pFrame->enet_srcaddr.S_un.s_ether_addr,(char *)m_sHeader.enet_srcaddr.S_un.s_ether_addr,6)!=0))
 	{
-		if(ntohs(pFrame->enet_type) == 0x1234){
+		if(ntohs(pFrame->enet_type) == 0x1234){//type checking (little-endian input)
 			bSuccess = mp_aUpperLayer[0]->Receive((unsigned char*) pFrame->enet_data);
 		}
 	}
